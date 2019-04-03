@@ -1,61 +1,26 @@
 <body>
-    <div class="bg">
-        <div class="user">
-            <img src="../../assets/face.png" alt="">
-          </div>
-       <div class = "Container cbox ">
-       
-            <form class="form-signin" [formGroup]="employeeform" (ngSubmit)="onSubmit(employeeform)">
-                <div class ="in">
-                  <div class="form-label-group ">
-                      <label for="inputEmail">Email Address:</label>
-                    <input  class="form-control"  id="inputEmail" formControlName="email" placeholder="Email">
-                  </div>
-                  <div *ngIf="email.invalid && (email.dirty || email.touched)">
-                    <div *ngIf="email.errors.required">Email is Required</div>
-                    <div *ngIf="email.errors.email">Text Must be in email form</div>  
-                  </div>
-                  <hr>
-                  <div class="form-label-group">
-                      <label for="inputPassword">Password:</label>
-                    <input type="password" class="form-control" formContolName="password" placeholder="Password">
-                  </div>
-                  <div *ngIf="password.invalid && (password.dirty || password.touched)">
-                      <div *ngIf="password.errors.required">Password is Required</div>
-                      <div *ngIf="password.errors.minlength">Password must be of 8 characters</div>
-                    </div>
-                    <div class="form-label-group combo_button">
-                      <button class="btn btn-primary button1" type="submit">Submit</button> 
-                      <button class="btn btn-primary button2" routerLink="/Signup"  routerLinkActive="active">Sign Up</button>
-                      </div>
-                     <!-- <h5><a class="d-block text-center mt-2 small" routerLink="/Signup"  routerLinkActive="active" >Create Account</a></h5> -->
-                </div>
-             </form>
-       
-       </div>
-      </div>
-</body>
-
-
-
-
-<!-- <body>
-  <div class="container cbox">
+  <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
+         
           <div class="card-body">
             <h3 class="card-title text-center" style="font-weight: bold">LOGIN</h3>
             <form class="form-signin" [formGroup]="employeeform" (ngSubmit)="onSubmit(employeeform)">
+           
+
               <div class="form-label-group">
                 <input  class="form-control"  id="inputEmail" formControlName="email" placeholder="email">
                 <label for="inputEmail">Email address</label>
               </div>
               <div *ngIf="email.invalid && (email.dirty || email.touched)">
                   <div *ngIf="email.errors.required">Email is Required</div>
-                  <div *ngIf="email.errors.email">Text Must be in email form</div>  
+                  <div *ngIf="email.errors.email">Text Must be in email form</div>
+                  
                 </div>
+              
               <hr>
+
               <div class="form-label-group">
                 <input type="password" class="form-control" formContolName="password" placeholder="Password">
                 <label for="inputPassword">Password</label>
@@ -63,18 +28,24 @@
               <div *ngIf="password.invalid && (password.dirty || password.touched)">
                   <div *ngIf="password.errors.required">Password is Required</div>
                   <div *ngIf="password.errors.minlength">Password must be of 8 characters</div>
+                  
+                  
                 </div>
+              
+              
               <div class="form-label-group">
               <button class="btn btn-block btn-primary" type="submit">Submit</button>
               </div>
              <h5><a class="d-block text-center mt-2 small" routerLink="/Signup"  routerLinkActive="active" >Create Account</a></h5> 
+          
+              
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body> -->
+</body>
 
 
 

@@ -1,87 +1,41 @@
-    <!-- The Modal -->
-    <!-- <div class="modal" id="myModal" style="margin-top:0px;margin-bottom:0px;">
-      <div class="modal-dialog">
-        <div class="modal-content"> -->
-          <!-- Modal Header -->
-          <!-- <div class="modal-header"> -->
-            <!-- <h4 class="modal-title">Add Expense</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div> -->
-          <!-- Modal body -->
-          <!-- <div class="modal-body">
-            <div class="container">
-              <form [formGroup]="form" (ngSubmit)="Add()">
-                <div class="form-group">
-                  <label for="Merchant">Merchant</label>
-                  <input type="text" class="form-control" formControlName="Merchant">
-                </div>
-                <div class="form-group">
-                  <label for="Total">Total</label>
-                  <input type="number" class="form-control" formControlName="Total">
-                </div>
-                <div class="form-group">
-                  <label for="Status">Status:</label>
-                  <input type="text" class="form-control" formControlName="Status">
-                </div>
-                <div class="form-group">
-                  <label for="Date">Date:</label>
-                  <input type="date" class="form-control" formControlName="Date">
-                </div>
-                <div class="form-group">
-                  <label for="comment">Comment:</label>
-                  <textarea class="form-control" rows="5" formControlName="Comment"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
- 
-
-
 <div class="create ">
-      <h4 class="modal-title">Add Expense</h4>
-      <form [formGroup]="service.form" (ngSubmit)="Add()" >
-        <div>
-             <mat-form-field> 
-                 <input formControlName="merchant" matInput placeholder="Merchant*">
-                 <mat-error>This field is mandatory.</mat-error>
-               </mat-form-field>
-        </div>
-       <div>
-           <mat-form-field>
-               <input formControlName="total" matInput placeholder="Total">
-               <mat-error>Invalid email address.</mat-error>
-             </mat-form-field>
-       </div>
-       <div>
-           <mat-form-field>
-               <input formControlName="status" matInput placeholder="status">
-               <mat-error>Invalid email address.</mat-error>
-             </mat-form-field>
-       </div>
-       <div>
-           <mat-form-field>
-               <input type = "date" formControlName="date" matInput placeholder="date">
-               <mat-error>Invalid email address.</mat-error>
-             </mat-form-field>
-       </div>
-       
-       <div>
-           <mat-form-field>
-               <input formControlName="comment" matInput placeholder="comment">
-               <mat-error>Invalid email address.</mat-error>
-             </mat-form-field>
-       </div>
-       
-      <button mat-raised-button class="button1" color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
-     <button mat-raised-button class="button2" color="warn" (click)="onClear()">Clear</button>
-     <button class="btn btn-danger button3" (click) ="onClose()">close</button>
-       </form>
-      
-  </div>
-    
-       
+  <h4 class="modal-title">Add Expense</h4>
+  <form [formGroup]="service.form" (ngSubmit)="Add()" >
+    <div>
+         <mat-form-field> 
+             <input formControlName="merchant" matInput placeholder="Merchant*">
+             <mat-error>This field is mandatory.</mat-error>
+           </mat-form-field>
+    </div>
+   <div>
+       <mat-form-field>
+           <input formControlName="total" matInput placeholder="Total">
+           <mat-error>Invalid email address.</mat-error>
+         </mat-form-field>
+   </div>
+   <div>
+       <mat-form-field>
+           <input formControlName="status" matInput placeholder="status">
+           <mat-error>Invalid email address.</mat-error>
+         </mat-form-field>
+   </div>
+   <div>
+       <mat-form-field>
+           <input type="date" formControlName="date" matInput placeholder="date">
+           <mat-error>Invalid email address.</mat-error>
+         </mat-form-field>
+   </div>
+   
+   <div>
+       <mat-form-field>
+           <input formControlName="comment" matInput placeholder="comment">
+           <mat-error>Invalid email address.</mat-error>
+         </mat-form-field>
+   </div>
+   
+  <button mat-raised-button class="button1" color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+ <button mat-raised-button class="button2" color="warn" (click)="onClear()">Clear</button>
+ <button class="btn btn-danger button3" (click) ="onClose()">Close</button>
+   </form>
+  
+</div>

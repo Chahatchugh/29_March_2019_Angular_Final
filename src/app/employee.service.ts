@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 import { HttpClient } from '@angular/common/http';
 import { Employee } from './employee';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { SubjectSubscriber } from 'rxjs/internal/Subject';
 
 
 
@@ -11,11 +14,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private _url: string = 'https://final-4184f.firebaseio.com/person.json';
+  user: Observable<firebase.User>;
 
+private response = new Subject();
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private firebaseAuth: AngularFireAuth) { }
 
 
   form: FormGroup = new FormGroup({
@@ -37,12 +40,35 @@ export class EmployeeService {
 
 
 
-  getEmployees(): Observable<Employee[]> {
-
-    return this.http.get<Employee[]>(this._url);
+  signup(email: string, password: string) {
+    this.firebaseAuth
+      .auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Success!', value);
+      })
+      .catch(err => {
+        console.log('Something went wrong:',err.message);
+      });    
   }
-  setEmployee(empdata): Observable<Employee[]> {
-    console.log(empdata);
-    return this.http.post<Employee[]>(this._url, empdata);
+  login(email: string, password: string):Observable<any> {
+    this.firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Nice, it worked!');
+        console.log(value);
+        this.response.next({success:value});
+      })
+      .catch(err => {
+        console.log('Something went wrong:',err.message);
+        this.response.next({error :err.message})
+      });
+      return this.response.asObservable();
+  }
+  logout() {
+    this.firebaseAuth
+      .auth
+      .signOut();
   }
 }

@@ -3,14 +3,10 @@
     --input-padding-y: .75rem;
   }
 
+
 body {
-  background-image: url("../../assets/mountain.jpg");
-  /* Full height */
-  height: 820px;
-  margin: 0; 
-   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
   }
   
   .card-signin {
@@ -35,7 +31,6 @@ body {
   
   .card-signin .card-body {
     padding: 2rem;
-    background-color: #222332;
   }
   
   .form-signin {
@@ -123,14 +118,3 @@ body {
     color: white;
     background-color: #3b5998;
   }
-  /* .cbox{
-    background-color: #222332;
-  } */
-  .head-title{
-    color: #09F085;
-  }
-
-  .validations_text{
-    color: red;
-  }
-  

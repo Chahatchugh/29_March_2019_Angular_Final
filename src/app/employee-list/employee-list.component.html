@@ -1,42 +1,55 @@
-<body class ="bg">     
-  <div class="container ">
+<body>
+  
+        
+  <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto ">
+      <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
+        
           <div class="card-body">
-            <h5 class="card-title text-center head-title">Registeration Form:</h5>
+            <h5 class="card-title text-center">Register</h5>
             <form class="form-signin" [formGroup]="employeeform" (ngSubmit)="onSubmit(employeeform)">
+             
               <div class="form-label-group">
                 <input  type="text " class="form-control" id="inputUserame" formControlName="name" placeholder="Fullname" required autofocus>
-                <label for="inputUserame">Username:</label>
+                <label for="inputUserame">Username</label>
               </div>
-              <div class="validations_text" *ngIf="name.invalid && (name.dirty || name.touched)">
+              <div *ngIf="name.invalid && (name.dirty || name.touched)">
                   <div *ngIf="name.errors.required">Name is Required</div>
-              </div>
+                  
+                  
+                </div>
+
               <div class="form-label-group">
                 <input type="text" class="form-control" id="inputEmail" formControlName="email" placeholder="email">
-                <label for="inputEmail">Email address:</label>
+                <label for="inputEmail">Email address</label>
               </div>
-              <div class="validations_text" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email.invalid && (email.dirty || email.touched)">
                   <div *ngIf="email.errors.required">Email is Required</div>
-                  <div *ngIf="email.errors.email">Text Must be in email form</div> 
+                  <div *ngIf="email.errors.email">Text Must be in email form</div>
+                  
                 </div>
+
+              
               <hr>
+
               <div class="form-label-group">
                 <input type="password" class="form-control" id="inputPassword" formControlName="password" placeholder="Password">
-                <label for="inputPassword">Password:</label>
+                <label for="inputPassword">Password</label>
               </div>
-              <div class="validations_text" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div *ngIf="password.invalid && (password.dirty || password.touched)">
                   <div *ngIf="password.errors.required">Password is Required</div>
-                  <div *ngIf="password.errors.minlength">Password must be of 8 characters</div> 
+                  <div *ngIf="password.errors.minlength">Password must be of 8 characters</div>
+                  
+                  
                 </div>
+              
               <div class="form-label-group">
               <button class="btn btn-block btn-primary" type="submit" [disabled]="!employeeform.valid">Submit</button>
               </div>
-              <div>
-                <button class="btn btn-success" routerLink="/login" routerLinkActive="active" > Sign In</button>
-              </div>
-             <!-- <a class="d-block text-center mt-2 small" routerLink="/login" routerLinkActive="active" >Sign In</a> -->
+             <a class="d-block text-center mt-2 small" routerLink="/login" routerLinkActive="active" >Sign In</a>
+          
+              
             </form>
           </div>
         </div>
@@ -44,51 +57,3 @@
     </div>
   </div>
 </body>
-
-
-
-
-
-<!-- <body>     
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 col-xl-9 mx-auto">
-          <div class="card card-signin flex-row my-5">
-            <div class="card-body">
-              <h5 class="card-title text-center">Register</h5>
-              <form class="form-signin" [formGroup]="employeeform" (ngSubmit)="onSubmit(employeeform)">
-                <div class="form-label-group">
-                  <input  type="text " class="form-control" id="inputUserame" formControlName="name" placeholder="Fullname" required autofocus>
-                  <label for="inputUserame">Username</label>
-                </div>
-                <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                    <div *ngIf="name.errors.required">Name is Required</div>
-                </div>
-                <div class="form-label-group">
-                  <input type="text" class="form-control" id="inputEmail" formControlName="email" placeholder="email">
-                  <label for="inputEmail">Email address</label>
-                </div>
-                <div *ngIf="email.invalid && (email.dirty || email.touched)">
-                    <div *ngIf="email.errors.required">Email is Required</div>
-                    <div *ngIf="email.errors.email">Text Must be in email form</div> 
-                  </div>
-                <hr>
-                <div class="form-label-group">
-                  <input type="password" class="form-control" id="inputPassword" formControlName="password" placeholder="Password">
-                  <label for="inputPassword">Password</label>
-                </div>
-                <div *ngIf="password.invalid && (password.dirty || password.touched)">
-                    <div *ngIf="password.errors.required">Password is Required</div>
-                    <div *ngIf="password.errors.minlength">Password must be of 8 characters</div> 
-                  </div>
-                <div class="form-label-group">
-                <button class="btn btn-block btn-primary" type="submit" [disabled]="!employeeform.valid">Submit</button>
-                </div>
-               <a class="d-block text-center mt-2 small" routerLink="/login" routerLinkActive="active" >Sign In</a>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body> -->

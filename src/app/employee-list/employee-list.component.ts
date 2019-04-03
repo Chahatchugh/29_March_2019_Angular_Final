@@ -15,14 +15,8 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit() {
 
     this.employeeform=this.employeeservice.form;
-    this.employeeservice.getEmployees().subscribe((data) => {
-      Object.keys(data).forEach((key) => {
-        this.employee.push(data[key])
-      });
-    });
+  }
 
-   
-}
 get name()
 {
   return this.employeeform.get('name');
@@ -37,9 +31,8 @@ get password()
 }
   onSubmit(employeeform) {
 
-    this.employeeservice.setEmployee(employeeform.value).subscribe((res) => {
-      console.log(res);
-    })
+    this.employeeservice.signup(this.employeeform.value.email, this.employeeform.value.password);
+    this.employeeform.value.email = this.employeeform.value.password = '';
 
   }
   

@@ -21,39 +21,30 @@ employeeform:FormGroup;
   {}
 
   onSubmit(employeeform) {
+    this.employeeservice.login(this.employeeform.value.email, this.employeeform.value.password).subscribe(res=>
+      {
+        res.success ? (this.router.navigate(['/Signin'])) : alert(res.error);
+      })
+    this.employeeform.value.email = this.employeeform.value.password = ' ';   
 
-    
-    this.employee.forEach((key) => {
-     if(employeeform.value.email===key.email && employeeform.value.password===key.password)
-     {
-
-       console.log("Login Success");
-       localStorage.setItem('isLoggedIn',"true");
-       localStorage.setItem('token',employeeform.value.email);
-       this.router.navigate(['/Signin',key.name] );
-
+      //  console.log("Login Success");
+      //  localStorage.setItem('isLoggedIn',"true");
+      //  localStorage.setItem('token',employeeform.value.email)
      }
-     
-    });
 
 
-  }
   ngOnInit() {
   this.employeeform=this.employeeservice.form;
-    if(localStorage.getItem('isLoggedIn')=="true"){
-      this.router.navigate(['/Signin'] );
-      console.log(localStorage.getItem('isLoggedIn'));
-    }
-    this.employeeservice.getEmployees().subscribe((data) => {
-      Object.keys(data).forEach((key) => {
-        this.employee.push(data[key])
-      });
-   
-    });
+    // if(localStorage.getItem('isLoggedIn')=="true"){
+    //   this.router.navigate(['/Signin'] );
+    //   console.log(localStorage.getItem('isLoggedIn'));
+    // }
+
    
     
      
   }
+
 
   get email()
   {

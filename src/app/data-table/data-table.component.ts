@@ -7,6 +7,7 @@ import {MatDialog,MatDialogModule} from '@angular/material'
 import { DataSource } from '@angular/cdk/table';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 import{AuthService} from '../auth.service';
+import {EmployeeService} from '../employee.service'
 
 
 
@@ -38,12 +39,12 @@ merchantFilter = new FormControl('');
 checked;
 
   
-  constructor(public authService: AuthService, private ExpenseService: ExpenseService,private route:ActivatedRoute,private router:Router,private dialog : MatDialog) {
+  constructor(private employeeserv:EmployeeService,public authService: AuthService, private ExpenseService: ExpenseService,private route:ActivatedRoute,private router:Router,private dialog : MatDialog) {
   
    }
 
   private name:string;
-
+  private value:number;
   data=["new","in progress","reimbursed"];
 
   @ViewChild(MatSort) sort: MatSort;
@@ -51,8 +52,6 @@ checked;
 
 employee;
   ngOnInit() {
-    let name1=this.route.snapshot.paramMap.get('name')
-    this.name=name1;
  
     this.ExpenseService.getEmployees().subscribe(
       list=>{
@@ -61,6 +60,7 @@ employee;
           return {
             $key: item.key,
            ...item.payload.val()
+          
           };
         });
         this.employee=array;
@@ -80,7 +80,7 @@ employee;
 
  Logout()
  {
-   this.authService.logout();
+  this.employeeserv.logout();
    this.router.navigate(['/login']);
  }
 
@@ -127,6 +127,11 @@ onSearchClear() {
       this.merchantKey="";
       this.applyFilter();
     }
+    else if(this.statusKey)
+    {
+      this.statusKey="";
+      this.applyFilter();
+    }
 }
   applyFilter() {
     if(this.searchKey)
@@ -141,10 +146,11 @@ onSearchClear() {
     {
       this.dataSource.filter = this.merchantKey.trim().toLowerCase();
     }
+    else if(this.statusKey)
+    {
+      this.dataSource.filter = this.statusKey.trim().toLowerCase();
+    }
    
-  }
-  onInfo(){
-    console.log("hello");
   }
  
   oncreate()
@@ -152,7 +158,7 @@ onSearchClear() {
     const dialogConfig=new MatDialogConfig();
     dialogConfig.disableClose =true;
     dialogConfig.autoFocus=true;
-    dialogConfig.width= "45%";
+    dialogConfig.width= "40%";
     this.dialog.open(SidenavComponent,dialogConfig);
 
   }
@@ -163,7 +169,7 @@ onSearchClear() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "45%";
+    dialogConfig.width = "40%";
     this.dialog.open(SidenavComponent,dialogConfig);
   }
   onDelete($key){

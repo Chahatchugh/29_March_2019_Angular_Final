@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {MatButtonModule,MatCheckboxModule,MatTableModule,MatPaginatorModule,MatSortModule,MatFormFieldModule,MatInputModule, MatIconModule,MatDialogModule} from '@angular/material'
