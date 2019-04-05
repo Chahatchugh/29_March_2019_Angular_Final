@@ -27,10 +27,12 @@ employeeform:FormGroup;
       {
         if(res.success) 
         {
-         (this.router.navigate(['/Signin'])) 
+         
         console.log("Login Success");
         localStorage.setItem('isLoggedIn',"true");
-        localStorage.setItem('token',this.employeeform.value.email)
+        localStorage.setItem('token',res.success);
+        this.router.navigate(['/Signin'])
+
       }
       else {
         alert(res.error);
@@ -47,16 +49,8 @@ employeeform:FormGroup;
   ngOnInit() {
   this.employeeform=this.employeeservice.form;
   
-
-
-  if(localStorage.getItem("isLoggedIn")=="true")
-  {
-    this.router.navigate(['/Signin']);
-  }
-  else {
-    this.router.navigate(['/login'])
-  }
-
+ localStorage.getItem("isLoggedIn")==="true" && this.router.navigate(['/Signin']); 
+  
     
 }
 

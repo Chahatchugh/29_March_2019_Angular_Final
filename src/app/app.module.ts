@@ -18,7 +18,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
-import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireMessagingModule } from 'angularfire2/messaging';
+import {MessagingService} from './messaging.service'
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
@@ -62,7 +63,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireModule.initializeApp(environment.firebase),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 ],
-  providers: [EmployeeService,ExpenseService],
+  providers: [EmployeeService,ExpenseService,MessagingService],
   bootstrap: [AppComponent],
   entryComponents :[SidenavComponent]
 })

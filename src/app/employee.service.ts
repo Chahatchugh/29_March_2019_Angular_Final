@@ -67,7 +67,7 @@ public noWhitespaceValidator(control: FormControl) {
       .then(value => {
         console.log('Nice, it worked!');
         console.log(value);
-        this.response.next({success:value});
+        this.response.next({success:value.user.email});
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);

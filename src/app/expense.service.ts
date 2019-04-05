@@ -23,11 +23,11 @@ export class ExpenseService {
   form: FormGroup =new FormGroup
   ({
     $key:new FormControl(null),
-    merchant:new FormControl('',[Validators.required,Validators.minLength(4),this.noWhitespaceValidator]),
-    total:new FormControl('',[Validators.required,this.noWhitespaceValidator]),
-    status:new FormControl('',[Validators.required,Validators.minLength(4),this.noWhitespaceValidator]),
-    date:new FormControl('',[Validators.required,this.noWhitespaceValidator]),
-    comment:new FormControl('',[this.noWhitespaceValidator])
+    merchant:new FormControl('',[Validators.required,Validators.minLength(4)]),
+    total:new FormControl('',[Validators.required]),
+    status:new FormControl('',[Validators.required,Validators.minLength(5)]),
+    date:new FormControl('',[Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]),
+    comment:new FormControl('')
   })
 
 initializeFormGroup(){
@@ -69,15 +69,11 @@ insertEmployee(employee)
 
       })
   }
-   public noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value || '').trim().length === 0;
-    const isValid = !isWhitespace;
-    return isValid ? null : { 'whitespace': true };
-  }
+  
  
   deleteEmployee($key: string)
   {
-    this.expenseList.remove($key);
+    return this.expenseList.remove($key);
   }
 
   populateform(employee)

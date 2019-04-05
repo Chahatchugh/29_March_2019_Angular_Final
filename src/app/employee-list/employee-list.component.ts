@@ -26,7 +26,8 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
 
-       
+    localStorage.getItem("isLoggedIn")==="true" && this.router.navigate(['/Signin']);
+   
 
   }
   
